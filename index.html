@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-ca">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="color-scheme" content="dark light">
+		<title>Shadow DOM Styling Precedence</title>
+		<link rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<main>
+			<article>
+				<h1>Shadow DOM Styling Precedence</h1>
+				<p>For elements exposed to the Shadow DOM (i.e. the host and slotted elements) and elements exposed from the Shadow DOM (i.e. parts), this is the order of precedence the styles take:</p>
+				<ol>
+					<li>
+						<details>
+							<summary>Styles set in the Shadow DOM with <code>!important</code></summary>
+							<pre><code>&lt;style&gt;
+	/* All of the following have no effect no matter how specific. */
+	article { color: deeppink; }
+	h1 { font-weight: 400; }
+	::part(container) { border: 1px solid blue; }
+&lt;/style&gt;
+&lt;article&gt;
+	&lt;template shadowroot="open"&gt;
+		&lt;style&gt;
+			/* All of the following cannot be overridden outside of the Shadow DOM. */
+			:host { color: dodgerblue !important; }
+			::slotted(h1) { font-weight: 500 !important; }
+			[part="container"] { border: 2px dashed red !important; }
+		&lt;/style&gt;
+		&lt;div part="container"&gt;
+			&lt;slot&gt;&lt;/slot&gt;
+		&lt;/div&gt;
+	&lt;/template&gt;
+	&lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/article&gt;</code></pre>
+						</details>
+					</li>
+					<li>
+						<details>
+							<summary>Styles set in the light DOM</summary>
+							<pre><code>&lt;style&gt;
+	/* These will override any Shadow DOM styles. */
+	article { color: deeppink; }
+	h1 { font-weight: 400; }
+	::part(container) { border: 1px solid blue; }
+&lt;/style&gt;
+&lt;article&gt;
+	&lt;template shadowroot="open"&gt;
+		&lt;style&gt;
+			/* All of these are overridden by the light DOM styles. */
+			:host { color: dodgerblue; }
+			::slotted(h1) { font-weight: 500; }
+			[part="container"] { border: 2px dashed red; }
+		&lt;/style&gt;
+		&lt;div part="container"&gt;
+			&lt;slot&gt;&lt;/slot&gt;
+		&lt;/div&gt;
+	&lt;/template&gt;
+	&lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/article&gt;</code></pre>
+						</details>
+					</li>
+					<li>
+						<details>
+							<summary>Styles set in the Shadow DOM</summary>
+							<pre><code>&lt;article&gt;
+	&lt;template shadowroot="open"&gt;
+		&lt;style&gt;
+			:host { color: dodgerblue; }
+			::slotted(h1) { font-weight: 500; }
+			[part="container"] { border: 2px dashed red; }
+		&lt;/style&gt;
+		&lt;div part="container"&gt;
+			&lt;slot&gt;&lt;/slot&gt;
+		&lt;/div&gt;
+	&lt;/template&gt;
+	&lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/article&gt;</code></pre>
+						</details>
+					</li>
+				</ol>
+			</article>
+		</main>
+		<footer>
+			<p>Made by Nathan Knowler in 2022.</p>
+		</footer>
+	</body>
+</html>

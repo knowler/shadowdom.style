@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+}
+
+code {
+  tab-size: 2ch;
+}
+
+article p {
+  max-inline-size: 48ch;
+  line-height: 1.5;
+}
+
+article li {
+  margin-block: 0.5em;
+}
+
+article code {
+  font-size: 1em;
+  line-height: 2;
+}
