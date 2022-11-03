@@ -1,0 +1,10 @@
+<header>
+	<p class="title">Styling the Shadow DOM</p>
+	<nav>
+		<ul role="list">
+			<li><nav-link href="/">Intro</nav-link></li>
+			<li><nav-link href="/concepts">Concepts</nav-link></li>
+			<li><nav-link href="/precedence">Precedence</nav-link></li>
+		</ul>
+	</nav>
+</header>

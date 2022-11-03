@@ -1,0 +1,28 @@
+{
+  "name": "shadowdom.style",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve --port=3000",
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:knowler/shadowdom.style.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knowler/shadowdom.style/issues"
+  },
+  "homepage": "https://github.com/knowler/shadowdom.style#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0-canary.16",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
+    "@11ty/eleventy-plugin-webc": "^0.5.1",
+    "install": "^0.13.0",
+    "npm": "^8.19.2"
+  }
+}

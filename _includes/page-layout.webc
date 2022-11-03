@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en-ca">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="color-scheme" content="dark light">
+		<link rel="stylesheet" href="/main.css">
+		<title>Shadow DOM Styling</title>
+	</head>
+	<body>
+		<a href="#content">Skip to content</a>
+		<site-header></site-header>
+		<main id="content">
+			<article @html="content"></article>
+		</main>
+		<site-footer></site-footer>
+	</body>
+</html>
