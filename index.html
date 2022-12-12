@@ -16,69 +16,71 @@
 					<li>
 						<details>
 							<summary>Styles set in the Shadow DOM with <code>!important</code></summary>
-							<pre><code>&lt;style&gt;
-	/* All of the following have no effect no matter how specific. */
-	article { color: deeppink; }
-	h1 { font-weight: 400; }
-	::part(container) { border: 1px solid blue; }
-&lt;/style&gt;
-&lt;article&gt;
-	&lt;template shadowroot="open"&gt;
-		&lt;style&gt;
-			/* All of the following cannot be overridden outside of the Shadow DOM. */
-			:host { color: dodgerblue !important; }
-			::slotted(h1) { font-weight: 500 !important; }
-			[part="container"] { border: 2px dashed red !important; }
-		&lt;/style&gt;
-		&lt;div part="container"&gt;
-			&lt;slot&gt;&lt;/slot&gt;
-		&lt;/div&gt;
-	&lt;/template&gt;
-	&lt;h1&gt;Hello, World!&lt;/h1&gt;
-&lt;/article&gt;</code></pre>
+							<pre>
+							<code class="language-html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+	<span class="hljs-comment">/* All of the following have no effect no matter how specific. */</span>
+	<span class="hljs-selector-tag">article</span> { <span class="hljs-attribute">color</span>: deeppink; }
+	<span class="hljs-selector-tag">h1</span> { <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>; }
+	<span class="hljs-selector-pseudo">::part</span>(container) { <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid blue; }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">shadowroot</span>=<span class="hljs-string">"open"</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+			<span class="hljs-comment">/* All of the following cannot be overridden outside of the Shadow DOM. */</span>
+			<span class="hljs-selector-pseudo">:host</span> { <span class="hljs-attribute">color</span>: dodgerblue <span class="hljs-meta">!important</span>; }
+			<span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-tag">h1</span>) { <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span> <span class="hljs-meta">!important</span>; }
+			<span class="hljs-selector-attr">[part=<span class="hljs-string">"container"</span>]</span> { <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> dashed red <span class="hljs-meta">!important</span>; }
+		</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">part</span>=<span class="hljs-string">"container"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></code>
+							</pre>
 						</details>
 					</li>
 					<li>
 						<details>
 							<summary>Styles set in the light DOM</summary>
-							<pre><code>&lt;style&gt;
-	/* These will override any Shadow DOM styles. */
-	article { color: deeppink; }
-	h1 { font-weight: 400; }
-	::part(container) { border: 1px solid blue; }
-&lt;/style&gt;
-&lt;article&gt;
-	&lt;template shadowroot="open"&gt;
-		&lt;style&gt;
-			/* All of these are overridden by the light DOM styles. */
-			:host { color: dodgerblue; }
-			::slotted(h1) { font-weight: 500; }
-			[part="container"] { border: 2px dashed red; }
-		&lt;/style&gt;
-		&lt;div part="container"&gt;
-			&lt;slot&gt;&lt;/slot&gt;
-		&lt;/div&gt;
-	&lt;/template&gt;
-	&lt;h1&gt;Hello, World!&lt;/h1&gt;
-&lt;/article&gt;</code></pre>
+							<pre><code class="language-html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+	<span class="hljs-comment">/* These will override any Shadow DOM styles. */</span>
+	<span class="hljs-selector-tag">article</span> { <span class="hljs-attribute">color</span>: deeppink; }
+	<span class="hljs-selector-tag">h1</span> { <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>; }
+	<span class="hljs-selector-pseudo">::part</span>(container) { <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid blue; }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">shadowroot</span>=<span class="hljs-string">"open"</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+			<span class="hljs-comment">/* All of these are overridden by the light DOM styles. */</span>
+			<span class="hljs-selector-pseudo">:host</span> { <span class="hljs-attribute">color</span>: dodgerblue; }
+			<span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-tag">h1</span>) { <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>; }
+			<span class="hljs-selector-attr">[part=<span class="hljs-string">"container"</span>]</span> { <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> dashed red; }
+		</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">part</span>=<span class="hljs-string">"container"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></code></pre>
 						</details>
 					</li>
 					<li>
 						<details>
 							<summary>Styles set in the Shadow DOM</summary>
-							<pre><code>&lt;article&gt;
-	&lt;template shadowroot="open"&gt;
-		&lt;style&gt;
-			:host { color: dodgerblue; }
-			::slotted(h1) { font-weight: 500; }
-			[part="container"] { border: 2px dashed red; }
-		&lt;/style&gt;
-		&lt;div part="container"&gt;
-			&lt;slot&gt;&lt;/slot&gt;
-		&lt;/div&gt;
-	&lt;/template&gt;
-	&lt;h1&gt;Hello, World!&lt;/h1&gt;
-&lt;/article&gt;</code></pre>
+							<pre><code class="language-html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">shadowroot</span>=<span class="hljs-string">"open"</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+			<span class="hljs-selector-pseudo">:host</span> { <span class="hljs-attribute">color</span>: dodgerblue; }
+			<span class="hljs-selector-pseudo">::slotted</span>(<span class="hljs-selector-tag">h1</span>) { <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>; }
+			<span class="hljs-selector-attr">[part=<span class="hljs-string">"container"</span>]</span> { <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> dashed red; }
+		</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">part</span>=<span class="hljs-string">"container"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, World!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span></code></pre>
 						</details>
 					</li>
 				</ol>
